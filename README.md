@@ -8,7 +8,7 @@ Projects include exploratory testing of a Ticket Cancellation Form and an API te
   Path: | [Exploratory_Testing_Ticket_Cancellation_Form](./Exploratory_Testing_Ticket_Cancellation)
 
 - **API Testing (coming soon)** — Postman collection and API test report.  
-  Path: `API_Testing_Postman/`
+  Path: | [API_Testing_Postman](./API_Testing_Postman)
 
 - **SQL Practice (coming soon)** — sample queries for validation tasks.  
   Path: `SQL_Queries_Practice/`
