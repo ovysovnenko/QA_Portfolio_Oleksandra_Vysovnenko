@@ -4,7 +4,7 @@ This repository contains practical QA cases created during my QA training and se
 Projects include exploratory testing of a Ticket Cancellation Form and an API testing case to come.
 
 ## Projects
-- **Exploratory Testing. Ticket Cancellation Form**: contains test plan, test cases, defect report and test summary report.  
+- **Exploratory Testing. Ticket Cancellation Form: contains test plan, test cases, defect report and test summary report.**  
   Path: | [Exploratory_Testing_Ticket_Cancellation_Form](./Exploratory_Testing_Ticket_Cancellation)
 
 - **API Testing (coming soon)** — Postman collection and API test report.  
