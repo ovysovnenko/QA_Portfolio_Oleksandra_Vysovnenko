@@ -3,9 +3,9 @@
 **Type:** Manual / Exploratory Testing  
 **Tools:** MS Excel, MS Word, Browser (Firefox)<br>
 **Files included:**
+- Test_Plan
 - Test_Cases
 - Defect_Report
-- Test_Plan
 - Test_Summary_Report
 
 **Overview:**  
