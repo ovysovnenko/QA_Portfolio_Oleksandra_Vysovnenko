@@ -5,7 +5,7 @@ Projects include exploratory testing of a Ticket Cancellation Form and an API te
 
 ## Projects
 - **Exploratory Testing: Ticket Cancellation Form** — contains test plan, test cases, defect report and test summary report.  
-  Path: `Exploratory_Testing_Ticket_Cancellation/`
+  Path: | [Exploratory Testing — Ticket Cancellation Form](./Exploratory_Testing_Ticket_Cancellation) |
 
 - **API Testing (coming soon)** — Postman collection and API test report.  
   Path: `API_Testing_Postman/`
