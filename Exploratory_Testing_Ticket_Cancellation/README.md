@@ -1,7 +1,7 @@
 # Exploratory Testing — Ticket Cancellation Form
 
 **Type:** Manual / Exploratory Testing  
-**Tools:** MS Excel, MS Word, Browser (Firefox) 
+**Tools:** MS Excel, MS Word, Browser (Firefox)
 **Files included:**
 - Test_Cases
 - Defect_Report
