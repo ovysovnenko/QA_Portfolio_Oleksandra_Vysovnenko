@@ -1,0 +1,516 @@
+{
+	"info": {
+		"_postman_id": "a936ac57-3eda-4c5f-849d-9e844cd3f60b",
+		"name": "API_Testing_DummyJSON",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "49723019"
+	},
+	"item": [
+		{
+			"name": "API_01",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 200 or 201\", () => {\r",
+							"  pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+							"});\r",
+							"\r",
+							"var jsonData = {};\r",
+							"try { jsonData = pm.response.json(); } catch(e) {}\r",
+							"pm.test(\"Response contains firstName\", () => {\r",
+							"  pm.expect(jsonData.firstName).to.eql(\"Oleksandra\");\r",
+							"});\r",
+							"pm.test(\"Response contains id\", () => {\r",
+							"  pm.expect(jsonData.id).to.exist;\r",
+							"});\r",
+							"\r",
+							"// save id to environment for later tests\r",
+							"if (jsonData.id) {\r",
+							"  pm.environment.set(\"createdUserId\", jsonData.id);\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Oleksandra\",\r\n  \"lastName\": \"Vysovnenko\",\r\n  \"age\": 30\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dummyjson.com/users/add",
+					"protocol": "https",
+					"host": [
+						"dummyjson",
+						"com"
+					],
+					"path": [
+						"users",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API_02",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 200\", () => {\r",
+							"  pm.expect(pm.response.code).to.eql(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = {};\r",
+							"try { jsonData = pm.response.json(); } catch(e) {}\r",
+							"pm.test(\"Response has users array\", () => {\r",
+							"  pm.expect(Array.isArray(jsonData.users)).to.be.true;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://dummyjson.com/users",
+					"protocol": "https",
+					"host": [
+						"dummyjson",
+						"com"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API_03",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 200\", () => {\r",
+							"  pm.expect(pm.response.code).to.eql(200);\r",
+							"});\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.test(\"ID equals 1\", () => {\r",
+							"  pm.expect(jsonData.id).to.eql(1);\r",
+							"});\r",
+							"pm.test(\"Has firstName\", () => {\r",
+							"  pm.expect(jsonData.firstName).to.exist;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://dummyjson.com/users/1",
+					"protocol": "https",
+					"host": [
+						"dummyjson",
+						"com"
+					],
+					"path": [
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API_04",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var code = pm.response.code;\r",
+							"pm.test(\"Status is 404 or has error message\", () => {\r",
+							"  pm.expect([404,200]).to.include(code);\r",
+							"});\r",
+							"// additional check for message if 200\r",
+							"var jsonData = {};\r",
+							"try { jsonData = pm.response.json(); } catch(e) {}\r",
+							"if (pm.response.code === 200) {\r",
+							"  pm.test(\"Response contains not found message\", () => {\r",
+							"    var m = (jsonData.message || \"\").toLowerCase();\r",
+							"    pm.expect(m.includes(\"not found\") || m.includes(\"no user\")).to.be.true;\r",
+							"  }"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://dummyjson.com/users/999999",
+					"protocol": "https",
+					"host": [
+						"dummyjson",
+						"com"
+					],
+					"path": [
+						"users",
+						"999999"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API_05",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 200\", function () {\r",
+							"    pm.expect([200]).to.include(pm.response.code);\r",
+							"});\r",
+							"\r",
+							"var jsonData = {};\r",
+							"try { jsonData = pm.response.json(); } catch(e) {}\r",
+							"if (pm.response.code === 200) {\r",
+							"    pm.test(\"lastName equals Updated\", function () {\r",
+							"        pm.expect(jsonData.lastName).to.eql(\"Updated\");\r",
+							"    });\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"lastName\": \"Updated\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dummyjson.com/users/{{createdUserId}}",
+					"protocol": "https",
+					"host": [
+						"dummyjson",
+						"com"
+					],
+					"path": [
+						"users",
+						"{{createdUserId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API_06",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 400 or 422 or 200 or 404\", function () {\r",
+							"    pm.expect([400,422,200,404]).to.include(pm.response.code);\r",
+							"});\r",
+							"\r",
+							"var jsonData = {};\r",
+							"try { jsonData = pm.response.json(); } catch(e) {}\r",
+							"if (pm.response.code === 400 || pm.response.code === 422) {\r",
+							"    pm.test(\"Validation error present\", function () {\r",
+							"        var msg = (jsonData.message || jsonData.error || \"\").toLowerCase();\r",
+							"        pm.expect(msg.includes(\"validation\") || msg.includes(\"error\") || msg.length>0).to.be.true;\r",
+							"    });\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"age\": \"notANumber\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dummyjson.com/users/{{createdUserID}}",
+					"protocol": "https",
+					"host": [
+						"dummyjson",
+						"com"
+					],
+					"path": [
+						"users",
+						"{{createdUserID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API_07_DELETE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204 or 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([204, 200]);\r",
+							"});\r",
+							"pm.test(\"Response indicates deletion or no content\", function () {\r",
+							"    pm.expect(pm.response.text()).to.satisfy(text => text === \"\" || text.includes(\"deleted\"));\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"age\": \"notANumber\"\r\n}\r\n"
+				},
+				"url": {
+					"raw": "https://dummyjson.com/users/{{createdUserID}}",
+					"protocol": "https",
+					"host": [
+						"dummyjson",
+						"com"
+					],
+					"path": [
+						"users",
+						"{{createdUserID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API_07",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code after deletion is 404 (Not Found) or 200 in DummyJSON\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([404, 200]);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"age\": \"notANumber\"\r\n}\r\n"
+				},
+				"url": {
+					"raw": "https://dummyjson.com/users/{{createdUserID}}",
+					"protocol": "https",
+					"host": [
+						"dummyjson",
+						"com"
+					],
+					"path": [
+						"users",
+						"{{createdUserID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API_08",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 404 or API-specific\", () => {\r",
+							"  pm.expect([404,200]).to.include(pm.response.code);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://dummyjson.com/users/999999",
+					"protocol": "https",
+					"host": [
+						"dummyjson",
+						"com"
+					],
+					"path": [
+						"users",
+						"999999"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API_09",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 400 or 422 (API-specific error)\", () => {\r",
+							"  pm.expect([400, 422]).to.include(pm.response.code);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"age\": 30\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dummyjson.com/users/add",
+					"protocol": "https",
+					"host": [
+						"dummyjson",
+						"com"
+					],
+					"path": [
+						"users",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API_10",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404 or API-specific error\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([404, 400, 422]);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"lastName\": \"X\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dummyjson.com/users/9999999",
+					"protocol": "https",
+					"host": [
+						"dummyjson",
+						"com"
+					],
+					"path": [
+						"users",
+						"9999999"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
