@@ -5,11 +5,11 @@ Tools: Postman (Web), MS Excel, MS Word, Browser (Firefox)
 
 Files included:
 
-Test_Plan
-Checklist
-Test_Cases
-Defect_Report
-Test_Summary_Report
+- Test_Plan  
+- Checklist  
+- Test_Cases  
+- Defect_Report  
+- Test_Summary_Report  
 
 Overview:
 This project demonstrates my manual functional API testing of the DummyJSON service.
