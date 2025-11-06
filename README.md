@@ -10,9 +10,6 @@ Projects include exploratory testing of a Ticket Cancellation Form and an API te
 - **API Testing (coming soon)** — Postman collection and API test report.  
   Path: | [API_Testing_Postman](./API_Testing_Postman)
 
-- **SQL Practice (coming soon)** — sample queries for validation tasks.  
-  Path: `SQL_Queries_Practice/`
-
 ## Contact
 - Email: a.vysovnenko@gmail.com
 - LinkedIn: [https://www.linkedin.com/in/oleksandra-vysovnenko](https://www.linkedin.com/in/oleksandra-vysovnenko-7a8abb261/)
