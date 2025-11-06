@@ -15,4 +15,3 @@ Overview:
 This project demonstrates my manual functional API testing of the DummyJSON service.
 I created 10 test cases (positive and negative) to verify basic CRUD operations (Create, Read, Update, and Delete) using Postman.
 The goal was to validate correct response codes and body structures.
-Some negative tests failed due to environment limitations (DummyJSON does not persist or validate data).
