@@ -1,7 +1,7 @@
-API_Testing_DummyJSON (CRUD Operations)
-Type: Manual / Functional API Testing
-Tools: Postman (Web), MS Excel, MS Word, Browser (Firefox)
-Files included:
+API_Testing_DummyJSON (CRUD Operations)  
+Type: Manual / Functional API Testing  
+Tools: Postman (Web), MS Excel, MS Word, Browser (Firefox)  
+Files included:  
 - Test_Plan  
 - Checklist  
 - Test_Cases  
