@@ -1,4 +1,5 @@
-API_Testing: DummyJSON_User_Management  
+# API_Testing: DummyJSON_User_Management  
+
 Type: Functional API Testing  
 Tools: Postman (Web), MS Excel, MS Word, Browser (Firefox)  
 Files included:  
