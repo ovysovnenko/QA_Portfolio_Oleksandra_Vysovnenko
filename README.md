@@ -1,13 +1,13 @@
 # QA_Portfolio_Oleksandra_Vysovnenko
 
-This repository contains practical QA cases created during my QA training and self-study.  
-Projects include exploratory testing of a Ticket Cancellation Form and an API testing case.
+This repository contains practical QA projects completed during my QA training and self-study.
+It includes exploratory testing of a Ticket Cancellation Form and an API testing project performed in Postman.
 
 ## Projects
 - **Exploratory Testing: Ticket Cancellation Form contains test plan, test cases, defect report and test summary report.**  
   Path: | [Exploratory_Testing_Ticket_Cancellation_Form](./Exploratory_Testing_Ticket_Cancellation)
 
-- **API Testing** — Postman collection and API test documentation: test plan, check list, test cases, defect report and test summary report.  
+- **API Testing** — Postman collection and API test documentation: test plan, check list, test cases, defect report, test summary report and screenshots.  
   Path: | [API_Testing_Postman](./API_Testing_Postman)
 
 ## Contact
