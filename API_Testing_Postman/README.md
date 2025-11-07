@@ -1,4 +1,4 @@
-API_Testing_DummyJSON (CRUD Operations)  
+API_Testing: DummyJSON (User Management).  
 Type: Manual / Functional API Testing  
 Tools: Postman (Web), MS Excel, MS Word, Browser (Firefox)  
 Files included:  
