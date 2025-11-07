@@ -6,7 +6,9 @@ Files included:
 - Checklist  
 - Test_Cases  
 - Defect_Report  
-- Test_Summary_Report  
+- Test_Summary_Report
+- - `Postman_Collection` (exported `.json`)  
+- `Screenshots` (evidence for test execution: request/response and Test Results images)
 
 Overview:
 This project demonstrates my manual functional API testing of the DummyJSON service.
